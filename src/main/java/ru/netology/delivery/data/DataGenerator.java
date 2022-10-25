@@ -15,8 +15,11 @@ public class DataGenerator {
     }
 
 
-    private  static Faker faker;
-    static void setUpAll() { faker = new Faker(new Locale("ru")) ; }
+    private static Faker faker;
+
+    static void setUpAll() {
+        faker = new Faker(new Locale("ru"));
+    }
 
     public static String generateDate(int days) {
         String date = LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
@@ -36,19 +39,11 @@ public class DataGenerator {
                 "Грозный", "Воронеж", "Вологда", "Волгоград", "Владимир", "Владикавказ", "Владивосток", "Великий Новгород",
                 "Брянск", "Благовещенск", "Биробиджан", "Белгород", "Барнаул", "Астрахань", "Архангельск", "Анадырь", "Абакан"};
 
-
-
-
-        // TODO: добавить логику для объявления переменной city и задания её значения, генерацию можно выполнить
-        // с помощью Faker, либо используя массив валидных городов и класс Random
         return city[new Random().nextInt(city.length)];
     }
 
     public static String generateName(String locale) {
         var faker = new Faker(new Locale(locale));
-
-        // TODO: добавить логику для объявления переменной name и задания её значения, для генерации можно
-        // использовать Faker
         return faker.name().lastName() + " " + faker.name().firstName();
     }
 
@@ -61,13 +56,9 @@ public class DataGenerator {
         private Registration() {
         }
 
-         public static UserInfo generateUser(String locale) {
-             UserInfo user = new UserInfo(generateCity(locale), generateName(locale), generatePhone(locale)) ;
+        public static UserInfo generateUser(String locale) {
+            UserInfo user = new UserInfo(generateCity(locale), generateName(locale), generatePhone(locale));
 
-
-
-            // TODO: добавить логику для создания пользователя user с использованием методов generateCity(locale),
-            // generateName(locale), generatePhone(locale)
             return user;
         }
     }
